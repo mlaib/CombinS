@@ -47,30 +47,32 @@
 #' @export
 
 GPBIB7A <-function(n,l,s,w){
-if (s<2 & l<2 & n<2) stop("n,l,s should be greater than 1")
-V<-n*l
-reso<-(n*l)%%(2*s)
-bbo<-ifelse(reso==0,"Yes","No")
+  if (s<2 & l<2 & n<2) stop("n,l,s should be greater than 1")
+  V<-n*l
+  reso<-(n*l)%%(2*s)
+  bbo<-ifelse(reso==0,"Yes","No")
 
-A<-NULL;mat<-NULL;lamda<-NULL
-for (i in 1:w){
-A[[i]]<-matrix(1:V, ncol=l, byrow=TRUE)
-z<-(i-1)*V
-A[[i]]<-A[[i]]+z}
+  A<-NULL;mat<-NULL;lamda<-NULL
+  for (i in 1:w){
+    A[[i]]<-matrix(1:V, ncol=l, byrow=TRUE)
+    z<-(i-1)*V
+    A[[i]]<-A[[i]]+z
+  }
 
-Bp<-NULL
-for (j in 1:w) {
-X<-Opn(A[[j]],s)
-Bp<-cbind(Bp,X)}
-BIB<-Bp
-T <- BIB[1, 1]
-R <- length(which(T == BIB))
-lamda[1] <- (n - 1) * choose(l - 2, s - 2)
-lamda[2] <- choose(l - 1, s - 1)
-lamda[3] <- choose(l - 2, s - 2)
-lamda[4] <- R
-lamda[5] <- lamda[1]
-lamda[6] <- lamda[2]
-lamda[7] <- lamda[3]
-return(list(PBIB = BIB, Type = "Generalized rectangular right angular (7) (GPBIB_7) designs", V = w * V, B = dim(BIB)[1], R = R, K = w*2 * s, lamda = lamda, Resolvable=bbo))
+  Bp<-NULL
+  for (j in 1:w) {
+    X<-Opn(A[[j]],s)
+    Bp<-cbind(Bp,X)
+  }
+  BIB<-Bp
+  T <- BIB[1, 1]
+  R <- length(which(T == BIB))
+  lamda[1] <- (n - 1) * choose(l - 2, s - 2)
+  lamda[2] <- choose(l - 1, s - 1)
+  lamda[3] <- choose(l - 2, s - 2)
+  lamda[4] <- R
+  lamda[5] <- lamda[1]
+  lamda[6] <- lamda[2]
+  lamda[7] <- lamda[3]
+  return(list(PBIB = BIB, Type = "Generalized rectangular right angular (7) (GPBIB_7) designs", V = w * V, B = dim(BIB)[1], R = R, K = w*2 * s, lamda = lamda, Resolvable=bbo))
 }
