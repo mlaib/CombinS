@@ -46,46 +46,46 @@
 #' @export
 
 GPBIB5 <-function(n,l,s,w){
-if (s<3 & l<2 & n<2) stop("n,l should be greater than 1 and s greater than 2")
-V<-n*l
-reso<-(n*l)%%(2*s)
-bbo<-ifelse(reso==0,"Yes","No")
+  if (s<3 & l<2 & n<2) stop("n,l should be greater than 1 and s greater than 2")
+  V<-n*l
+  reso<-(n*l)%%(2*s)
+  bbo<-ifelse(reso==0,"Yes","No")
 
-A<-NULL;mat<-NULL;lamda<-NULL
-for (i in 1:w){
-A[[i]]<-matrix(1:V, ncol=l, byrow=TRUE)
-z<-(i-1)*V
-A[[i]]<-A[[i]]+z}
+  A<-NULL;mat<-NULL;lamda<-NULL
+  for (i in 1:w){
+    A[[i]]<-matrix(1:V, ncol=l, byrow=TRUE)
+    z<-(i-1)*V
+    A[[i]]<-A[[i]]+z}
 
-Bp<-NULL
-for (j in 1:w) {
-AA<-A[[j]]
-AB<-A[-j]
-M<-length(AB)
+    Bp<-NULL
+    for (j in 1:w) {
+      AA<-A[[j]]
+      AB<-A[-j]
+      M<-length(AB)
 
+      for (m in 1:M){
+        AS<-AB[[m]]
 
-for (m in 1:M){
-AS<-AB[[m]]
+        for (k in 1:l) {
+          co<-AA[,k]
 
-for (k in 1:l) {
-co<-AA[,k]
-
-
-
-mt<-cbind(co,AS)
-X<-Opn(mt,s)
-y<-dim(X)[1]
-for (x in y:1){
-if (any(X[x,1]==co)==FALSE){
-X<-X[-x,]}}
-Bp<-rbind(Bp,X)}}}
-PBIB<-Bp
-T <- PBIB[1, 1]
-R <- length(which(T == PBIB))
-lamda[1] <- l * (n - 1) * choose(l - 2, s - 3)*(w-1)
-lamda[2] <- choose(l, s - 1) + (l * choose(l - 1, s - 2))*(w-1)
-lamda[3] <- l * choose(l - 2, s - 3)*(w-1)
-lamda[4] <- 2 * (n - 1) * choose(l - 1, s - 2)
-lamda[5] <- 2 * choose(l - 1, s - 2)
-return(list(PBIB = PBIB, Type = "Generalized rectangular right angular (5) (GPBIB_5) design", V = w * V, B = dim(PBIB)[1], R = R, K = 2 * s, lamda = lamda, Resolvable=bbo))
+          mt<-cbind(co,AS)
+          X<-Opn(mt,s)
+          y<-dim(X)[1]
+          for (x in y:1){
+            if (any(X[x,1]==co)==FALSE){
+            X<-X[-x,]}}
+            Bp<-rbind(Bp,X)
+        }
+      }
+    }
+  PBIB<-Bp
+  T <- PBIB[1, 1]
+  R <- length(which(T == PBIB))
+  lamda[1] <- l * (n - 1) * choose(l - 2, s - 3)*(w-1)
+  lamda[2] <- choose(l, s - 1) + (l * choose(l - 1, s - 2))*(w-1)
+  lamda[3] <- l * choose(l - 2, s - 3)*(w-1)
+  lamda[4] <- 2 * (n - 1) * choose(l - 1, s - 2)
+  lamda[5] <- 2 * choose(l - 1, s - 2)
+  return(list(PBIB = PBIB, Type = "Generalized rectangular right angular (5) (GPBIB_5) design", V = w * V, B = dim(PBIB)[1], R = R, K = 2 * s, lamda = lamda, Resolvable=bbo))
 }
