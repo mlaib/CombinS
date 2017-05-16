@@ -47,65 +47,68 @@
 #' @export
 
 GPBIB7B <-function(n,l,s,w){
-if (s<3 | l<2 | n<2) stop("n,l should be greater than 1 and s greater than 2")
+  if (s<3 | l<2 | n<2) stop("n,l should be greater than 1 and s greater than 2")
 
-V<-n*l
-reso<-(n*l)%%(2*s)
-bbo<-ifelse(reso==0,"Yes","No")
+  V<-n*l
+  reso<-(n*l)%%(2*s)
+  bbo<-ifelse(reso==0,"Yes","No")
 
+  A<-NULL;mat<-NULL;lamda<-NULL
+  for (i in 1:w){
+    A[[i]]<-matrix(1:V, ncol=l, byrow=TRUE)
+    z<-(i-1)*V
+    A[[i]]<-A[[i]]+z
+  }
 
-A<-NULL;mat<-NULL;lamda<-NULL
-for (i in 1:w){
-A[[i]]<-matrix(1:V, ncol=l, byrow=TRUE)
-z<-(i-1)*V
-A[[i]]<-A[[i]]+z}
+  Bp<-NULL
+  BB<-NULL
+  for (j in 1:w) {
+    AA<-A[[j]]
+    AB<-A[-j]
+    M<-length(AB)
 
-Bp<-NULL
-BB<-NULL
-for (j in 1:w) {
-AA<-A[[j]]
-AB<-A[-j]
-M<-length(AB)
+    for (m in 1:M){
+      AS<-AB[[m]]
 
+      for (k in 1:l) {
+        AS1<-AS
+        AS2<-AS
+        co1<-AA[,k]
+        co2<-AA[k,]
 
-for (m in 1:M){
-AS<-AB[[m]]
+        AS1[,k]<-AA[,k]
+        AS2[k,]<-AA[k,]
 
-for (k in 1:l) {
-AS1<-AS
-AS2<-AS
-co1<-AA[,k]
-co2<-AA[k,]
+        X1<-Opn(AS1,s)
+        y1<-dim(X1)[1]
+        for (x in y1:1){
+          if (length(intersect(X1[x,],co1))==0) {
+          X1<-X1[-x,]
+          }
+        }
+      Bp<-rbind(Bp,X1)
 
-AS1[,k]<-AA[,k]
-AS2[k,]<-AA[k,]
+      X2<-Opn(AS2,s)
+      y2<-dim(X2)[1]
+      for (z in y2:1){
+        if (length(intersect(X2[z,],co2))==0) {
+        X2<-X2[-z,]
+        }
+      }
 
-
-X1<-Opn(AS1,s)
-y1<-dim(X1)[1]
-for (x in y1:1){
-if (length(intersect(X1[x,],co1))==0) {
-X1<-X1[-x,]}}
-Bp<-rbind(Bp,X1)
-
-X2<-Opn(AS2,s)
-y2<-dim(X2)[1]
-for (z in y2:1){
-if (length(intersect(X2[z,],co2))==0) {
-X2<-X2[-z,]}}
-
-BB<-rbind(BB,X2)
-
-}}}
-PBIB<-rbind(Bp,BB)
-T <- PBIB[1, 1]
-R <- length(which(T == PBIB))
-lamda[1] <- s*(n-1)*(w-1)*choose(l-2,s-2)
-lamda[2] <- s*(w-1)*choose(l-1,s-1)
-lamda[3] <- (l - 2) * choose(l - 3, s - 3)*(w-1)
-lamda[4] <- 0
-lamda[5] <- 2 * (n - 1) * choose(l - 2, s - 2)
-lamda[6] <- 2 * choose(l - 1, s - 1)
-lamda[7] <- 4 * choose(l - 2, s - 2)
-return(list(PBIB = PBIB, Type = "Generalized rectangular right angular (7) (PBIB_7) design", V = w * V, B = dim(PBIB)[1], R = R, K = 2 * s, lamda = lamda, Resolvable=bbo))
+      BB<-rbind(BB,X2)
+      }
+    }
+  }
+  PBIB<-rbind(Bp,BB)
+  T <- PBIB[1, 1]
+  R <- length(which(T == PBIB))
+  lamda[1] <- s*(n-1)*(w-1)*choose(l-2,s-2)
+  lamda[2] <- s*(w-1)*choose(l-1,s-1)
+  lamda[3] <- (l - 2) * choose(l - 3, s - 3)*(w-1)
+  lamda[4] <- 0
+  lamda[5] <- 2 * (n - 1) * choose(l - 2, s - 2)
+  lamda[6] <- 2 * choose(l - 1, s - 1)
+  lamda[7] <- 4 * choose(l - 2, s - 2)
+  return(list(PBIB = PBIB, Type = "Generalized rectangular right angular (7) (PBIB_7) design", V = w * V, B = dim(PBIB)[1], R = R, K = 2 * s, lamda = lamda, Resolvable=bbo))
 }
