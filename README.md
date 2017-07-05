@@ -1,7 +1,6 @@
-# CombinS
-R Package
+# CombinS R Package
 
-Title: Construction Methods of some Series of PBIB Designs
+Construction Methods of some Series of PBIB Designs
 
 Version: 1.1-1
 
