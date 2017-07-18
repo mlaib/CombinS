@@ -1,4 +1,4 @@
-# CombinS R Package
+# CombinS
 
 Construction Methods of some Series of PBIB Designs
 
