@@ -14,6 +14,7 @@ URL: www.sites.google.com/site/mohamedlaibwebpage
 
 License: GPL-3
 
+[![Downloads from the RStudio CRAN mirror](http://cranlogs.r-pkg.org/badges/grand-total/CombinS)](http://cran.rstudio.com/package=CombinS)
 
 
 Note: This version is a generalisation for (v=wnl) treatments. In the
