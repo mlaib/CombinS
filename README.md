@@ -2,15 +2,15 @@
 
 Construction Methods of some Series of PBIB Designs
 
-Version: 1.1-1
+Version: 1.2
 
-Date: 2016-11-22
+Date: 2025-05-27
 
 Author: Mohamed Laib, Imane Rezgui, Zebida Gheribi-Aoulmi and Herve Monod
 
 Description: Series of partially balanced incomplete block designs (PBIB) based on the combinatory method (S) introduced in (Imane Rezgui et al, 2014) <doi:10.3844/jmssp.2014.45.48>; and their associated U-type design.
 
-URL: https://mlaib.github.io/
+URL: https://mlaib.net/
 
 License: GPL-3
 

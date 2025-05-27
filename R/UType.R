@@ -1,7 +1,7 @@
 #' U-type design via some PBIB designs
 #'
 #' Applies the Fang algorithm on our constructed designs to obtain
-#' the configuration and the parameters of the associated U-type design.
+#' the configuration and the parameters of the U-type design associated.
 #' @usage UType(lst)
 #' @param lst The output of one of our package functions.
 #' @return A LIST :

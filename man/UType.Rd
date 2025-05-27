@@ -27,11 +27,10 @@ M<-GPBIB4A(4,4,2,2)
 UType(M)
 }
 }
-\author{
-Mohamed Laib, Imane Rezgui, Zebida Gheribi-Aoulmi and Herve Monod
-}
 \references{
 K.T. Fang, R.Li and A.Sudjanto (2006). Design ans Modeling for Computer
 Experiments. Taylor & Francis Group, LLC London.
 }
-
+\author{
+Mohamed Laib, Imane Rezgui, Zebida Gheribi-Aoulmi and Herve Monod
+}

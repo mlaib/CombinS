@@ -27,8 +27,7 @@
 #' @references
 #' Imane Rezgui, Z. Gheribi-Aoulmi and H. Monod (2015). U-type Designs via
 #' New Generalized Partially Balanced Incomplete Block Designs with m = 4, 5
-#' and 7 Associated Classes,
-#' \href{http://dx.doi.org/10.4236/am.2015.62024}{Applied mathematics, 6, 242-264.}
+#' and 7 Associated Classes, \doi{10.4236/am.2015.62024}, Applied mathematics, 6, 242-264.
 #'
 #' Imane Rezgui, Z.Gheribi-Aoulmi and H. Monod, New association schemes
 #' with 4, 5 and 7 associated classes and their associated partially
@@ -48,27 +47,25 @@
 #' }
 #' @export
 GPBIB4A <-function(n,l,s,w){
-  if (s<2 & l<2 & n<2) stop("n,l,s should be great than 1")
-  V<-n*l
-	reso<-(n*l)%%(2*s)
-	bbo<-ifelse(reso==0,"Yes","No")
+if (s<2 & l<2 & n<2) stop("n,l,s should be great than 1")
+V<-n*l
+reso<-(n*l)%%(2*s)
+bbo<-ifelse(reso==0,"Yes","No")
 
-	A<-NULL;mat<-NULL;lamda<-NULL
-	for (i in 1:w){
-		A[[i]]<-matrix(1:V, ncol=l, byrow=TRUE)
-		z<-(i-1)*V
-		A[[i]]<-A[[i]]+z
-	}
+A<-NULL;mat<-NULL;lamda<-NULL
+for (i in 1:w){
+A[[i]]<-matrix(1:V, ncol=l, byrow=TRUE)
+z<-(i-1)*V
+A[[i]]<-A[[i]]+z}
 
 
-	for (i in 1:w){
-		mw<-A[[i]]
-		mat[[i]]<-Opn(mw,s)
-	}
+for (i in 1:w){
+mw<-A[[i]]
+mat[[i]]<-Opn(mw,s)}
 
-	BIB<-Reduce("rbind",mat)
-	T<-BIB[1,1];R<-length(which(T==BIB))
-	lamda[1]<-(n-1)*choose(l-2,s-2);lamda[2]<-choose(l-1,s-1);lamda[3]<-choose(l-2,s-2);lamda[4]<-0
+BIB<-Reduce("rbind",mat)
+T<-BIB[1,1];R<-length(which(T==BIB))
+lamda[1]<-(n-1)*choose(l-2,s-2);lamda[2]<-choose(l-1,s-1);lamda[3]<-choose(l-2,s-2);lamda[4]<-0
 return(list(PBIB=BIB,Type="Generalized rectangular right angular (4) (GPBIB_4) design",V=w*V,B=dim(BIB)[1],R=R,K=2*s,lamda=lamda, Resolvable=bbo))}
 
 

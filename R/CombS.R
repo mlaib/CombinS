@@ -27,8 +27,7 @@
 #' @references
 #' Imane Rezgui, Z. Gheribi-Aoulmi (2014). New construction method
 #' of rectangular partially balanced incomplete block designs and
-#' singular group divisible designs,
-#' \href{http://www.thescipub.com/jmss.toc}{Journal of Mathematics and Statistics, 10, 45- 48.}
+#' singular group divisible designs, Journal of Mathematics and Statistics, 10, 45- 48.
 #'
 #' M.N. Vartak 1955. On an application of Kronecker product of Matrices to Statistical designs. Ann. Math. Stat.,26(420-438).
 #'

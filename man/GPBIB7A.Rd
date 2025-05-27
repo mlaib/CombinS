@@ -46,14 +46,10 @@ w<-3
 GPBIB7A(n, l, s, w)
 }
 }
-\author{
-Mohamed Laib, Imane Rezgui, Zebida Gheribi-Aoulmi and Herve Monod
-}
 \references{
 Imane Rezgui, Z. Gheribi-Aoulmi and H. Monod (2015). U-type Designs via
 New Generalized Partially Balanced Incomplete Block Designs with m = 4, 5
-and 7 Associated Classes,
-\href{http://dx.doi.org/10.4236/am.2015.62024}{Applied mathematics, 6, 242-264.}
+and 7 Associated Classes, \doi{10.4236/am.2015.62024}, Applied mathematics, 6, 242-264.
 
 Imane Rezgui, Z.Gheribi-Aoulmi and H. Monod, New association schemes
 with 4, 5 and 7 associated classes and their associated partially
@@ -63,4 +59,6 @@ Mathematics Vol.12 Issue 2 197-206.
 \seealso{
 \code{\link{GPBIB7B}} and \code{\link{UType}}
 }
-
+\author{
+Mohamed Laib, Imane Rezgui, Zebida Gheribi-Aoulmi and Herve Monod
+}
